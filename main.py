@@ -76,9 +76,9 @@ def check_is_valid(state_abbr, dln):
     if state_abbr is not None:
         try:
             if is_valid(dln, state_abbr):
-                return "Your Driver's License # is Valid"
+                return True
             else:
-                return "Your Driver's License # is not Valid"
+                return "Your Driver's License Number is not Valid"
         except Exception as e:
             return str(e)
     else:
