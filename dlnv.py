@@ -29,13 +29,8 @@ def submit():
     state = request.form['state']
     form = dlnvForm()
 
-    print( check_is_valid(state, dlNumber))
-
-    if form.validate_on_submit():
-#       if {validation} is not False:
-            flash(f"Your Drivers License Number is {validation}!")
-            return redirect(url_for('submit'))
-    return render_template('dlnpage.html', title='Validator', form=form)
+    print(check_is_valid(state, dlNumber))
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
