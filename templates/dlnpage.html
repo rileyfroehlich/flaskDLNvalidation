@@ -1,0 +1,28 @@
+{% extends "layouts.html" %}
+{% block content %}
+
+    <div class="content-section">
+        <form method=POST" action="">
+
+            <fieldset class="form-group">
+                <div class=form-group">
+                    {{ form.fname.label(class="form-control-label") }}
+                    {{ form.fname(class="form-control form-control lg") }}
+                </div>
+                <div class=form-group">
+                    {{ form.lname.label(class="form-control-label") }}
+                    {{ form.lname(class="form-control form-control lg") }}
+                </div>
+                <div class=form-group">
+                    {{ form.dlnumber.label(class="form-control-label") }}
+                    {{ form.dlnumber(class="form-control form-control lg") }}
+                </div>
+                <div class=form-group">
+                    {{ form.state.label(class="form-control-label") }}
+                    {{ form.state(class="form-control form-control lg") }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+{% endblock %}
