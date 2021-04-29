@@ -34,6 +34,3 @@ def submit():
     else:
         flash(response, 'danger')
     return render_template('dlnpage.html', title='Validator', form=form)
-
-if __name__ == '__main__':
-    app.run(debug=True)
