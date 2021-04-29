@@ -11,7 +11,7 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'Ftcc9uACqVnPPuuK5EtsUvguUwYIyi0P'
 
 
-@app.route("/dlnv")
+@app.route("/")
 def validate():
     form = dlnvForm()
     return render_template('dlnpage.html', title='Validator', form=form)

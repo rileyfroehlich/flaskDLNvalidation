@@ -3,25 +3,30 @@
 
     <div class="content-section">
         <form method=POST" action="">
+            {{ form.hidden_tag() }}
 
             <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Verify your Driver's License Number</legend>
                 <div class=form-group">
-                    {{ form.fname.label(class="form-control-label") }}
-                    {{ form.fname(class="form-control form-control lg") }}
+                    {{ form.fName.label(class="form-control-label") }}
+                    {{ form.fName(class="form-control form-control lg") }}
                 </div>
                 <div class=form-group">
-                    {{ form.lname.label(class="form-control-label") }}
-                    {{ form.lname(class="form-control form-control lg") }}
+                    {{ form.lName.label(class="form-control-label") }}
+                    {{ form.lName(class="form-control form-control lg") }}
                 </div>
                 <div class=form-group">
-                    {{ form.dlnumber.label(class="form-control-label") }}
-                    {{ form.dlnumber(class="form-control form-control lg") }}
+                    {{ form.dlNumber.label(class="form-control-label") }}
+                    {{ form.dlNumber(class="form-control form-control lg") }}
                 </div>
                 <div class=form-group">
                     {{ form.state.label(class="form-control-label") }}
                     {{ form.state(class="form-control form-control lg") }}
                 </div>
             </fieldset>
+            <div class="form-group" action=>
+                {{ form.submit(class='btn btn-outline-info')}}
+            </div>
         </form>
     </div>
 
