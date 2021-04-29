@@ -1,1 +1,1 @@
-web: gunicorn app:dlnv
+web: gunicorn dlnv:app
