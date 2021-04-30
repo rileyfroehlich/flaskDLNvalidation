@@ -26,6 +26,9 @@ def submit():
     lName = request.form['lName']
     dlNumber = request.form['dlNumber']
     state = request.form['state']
+    month = request.form['month']
+    day = request.form['day']
+    sex = request.form['sex']
     form = dlnvForm()
 
     response = check_is_valid(state, dlNumber)
