@@ -108,7 +108,7 @@ def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, 
 
                 DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex )
                 print(DLN)
-                if dln == DLN:
+                if dln == DLN or DLN == True:
                     return True
                 return "Your Driver's License Number is not Valid!"
             

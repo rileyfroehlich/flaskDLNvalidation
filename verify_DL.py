@@ -1,6 +1,7 @@
 from states.maryland_michigan_dln import generateDLNMarylandMichigan
 from states.new_hampshire_dln import generateDLNNewHampshire
 from states.Illinois_Florida_Wisconsin import generateDLNIllinoisFloridaWisconsin
+from states.utah_dln_nums import generateDLN_UT_TN_NM_VT_MB_WA
 
 def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex ):
 
@@ -15,6 +16,9 @@ def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex ):
     #NEW HAMPSHIRE
     elif state_abbr == 'NH':
         return generateDLNNewHampshire( state_abbr, month, day, year, sex, fName, lName, middle )
+
+    elif state_abbr in ['UT', 'TN', 'VT', 'NM', 'WA', 'MB']:
+        return generateDLN_UT_TN_NM_VT_MB_WA( dln, state_abbr )
 
     #state not included/something went wrong
     else:
