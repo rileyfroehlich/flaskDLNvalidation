@@ -1177,7 +1177,7 @@ def name_middle_initial(name, last_name, middle_initial=None):
         if len(name) == 0:
             name_code += '000'
         else:
-            name_code += str(middle_name_dictionary[name[0]]).zfill(3)
+            name_code += str(middle_name_dictionary[name[0].upper()]).zfill(3)
 
     #use middle name on same dictionary for encoding
     else:
