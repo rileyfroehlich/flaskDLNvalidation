@@ -1155,7 +1155,8 @@ def name_middle_initial(name, last_name, middle_initial=None):
     sdx = get_soundex(last_name)
 
     name = name.lower()
-    middle_initial = middle_initial.lower()
+    if len(middle_initial) != 0:
+        middle_initial = middle_initial.lower()
 
     middle_name_dictionary = {}
     #setting up additional dictionary for special cases
@@ -1172,7 +1173,7 @@ def name_middle_initial(name, last_name, middle_initial=None):
 
     #middle initial doesn't exist use the next character in first name
     #on 2nd dictionary, if first name used fully add '000'
-    if middle_initial == None:
+    if len(middle_initial) == 0:
         if len(name) == 0:
             name_code += '000'
         else:

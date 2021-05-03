@@ -110,7 +110,9 @@ def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, 
                 #call helper functions to verify DL number
                 day = int(day)
                 year = int(year)
+
                 DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex, dlMonth, dlYear )
+                print(DLN)
                 if dln == DLN:
                     return True
                 return "Your Driver's License Number is not Valid!"

@@ -27,7 +27,8 @@ def get_soundex(name):
 def name_middle_initial(name, last_name, middle_initial=None):
 	#get soundex of given name
 	sdx = get_soundex(last_name)
-	if middle_initial is not None:
+
+	if len(middle_initial) != 0:
 		middle_initial = middle_initial[0]
 
 	name_dictionary = {'Albert':20, 'Frank':260,'Marvin':580,
@@ -68,10 +69,12 @@ def name_middle_initial(name, last_name, middle_initial=None):
 		dict2[alphabet2[i]] = i + 1
 	
 	middle_initial_encoding = 0
-	for key in dict2.keys():
-		if middle_initial in key:
-			middle_initial_encoding = dict2[key]
-			break
+	if len(middle_initial) != 0:
+		for key in dict2.keys():
+			if middle_initial in key:
+				middle_initial_encoding = dict2[key]
+				break
+			
 	name = name.capitalize()
 	if name in name_dictionary:
 		name0 = name_dictionary[name]
