@@ -29,9 +29,11 @@ def submit():
     month = request.form['month']
     day = request.form['day']
     sex = request.form['sex']
+    dlMonth = request.form['dlMonth']
+    dlYear = request.form['dlYear']
     form = dlnvForm()
 
-    response = check_is_valid(state, dlNumber)
+    response = check_is_valid(state, dlNumber, fName, lName, month, day, sex, dlMonth, dlYear)
     if response == True:
         flash(f"Your Driver's License Number is Valid", 'success')
     else:
