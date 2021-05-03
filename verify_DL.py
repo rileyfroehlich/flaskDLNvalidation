@@ -2,7 +2,7 @@ from states.maryland_michigan_dln import generateDLNMarylandMichigan
 from states.new_hampshire_dln import generateDLNNewHampshire
 from states.Illinois_Florida_Wisconsin import generateDLNIllinoisFloridaWisconsin
 
-def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, dlMonth, dlYear):
+def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex ):
 
     #FLORIDA, WISCONSIN, ILLINOIS
     if state_abbr == 'FL' or state_abbr == 'WI' or state_abbr == 'IL':

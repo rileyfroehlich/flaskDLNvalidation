@@ -1,5 +1,5 @@
 from dlnvalidation import is_valid
-from datetime import date
+from datetime import date, datetime
 from verify_DL import DLHelper
 
 dictMonths = {"JANUARY" : 1, "FEBRUARY" : 2, "MARCH" : 3,
@@ -80,7 +80,7 @@ def get_state_abbr(state):
     #State not found return None
     return None
 
-def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, dlMonth, dlYear):
+def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, dlDay, dlMonth, dlYear):
     state_abbr = get_state_abbr(state_abbr)
     if state_abbr is not None:
 
@@ -92,26 +92,21 @@ def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, 
             return "Invalid birth month identified"
         if len(dlYear) != 4 or len(year) != 4:
             return "Invalid year identified"
-        if len(day) > 2:
-            return "Invalid day of birth identified"
+        if len(day) > 2 or len(dlDay) > 2:
+            return "Invalid day identified"
 
         try:
             if is_valid(dln, state_abbr):
                 #check expiry date if the DL format is correct
-                today = date.today()
-                curr_month = int(today.strftime('%m'))
-                curr_year = int(today.strftime('%Y'))
-    
-                if curr_year > int(dlYear):
-                    return "Your Driver's License is Expired!"
-                elif curr_year == int(dlYear) and curr_month > int(dlMonth):
+                expiration_date = str(dlYear) + '-' + str(dlMonth) + '-' + str(dlDay)
+                if datetime.strptime(expiration_date,"%Y-%m-%d").date() < date.today():
                     return "Your Driver's License is Expired!"
 
                 #call helper functions to verify DL number
                 day = int(day)
                 year = int(year)
 
-                DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex, dlMonth, dlYear )
+                DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex )
                 print(DLN)
                 if dln == DLN:
                     return True
