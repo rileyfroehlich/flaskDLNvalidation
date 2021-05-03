@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 class dlnvForm(FlaskForm):
     fName = StringField('What is your First Name?', validators=[DataRequired(), Length(min=1)])
+    mName = StringField('What is your Middle Name?', validators=[DataRequired(), Length(min=1)])
     lName = StringField('What is your Last Name?', validators=[DataRequired(), Length(min=1)])
     month = StringField('What is your birth month? (i.e. January)', validators=[DataRequired(), Length(min=3)])
     day = StringField('What is your day of birth?', validators=[DataRequired(), Length(min=1,max=2)])

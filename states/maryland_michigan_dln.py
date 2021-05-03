@@ -1209,5 +1209,3 @@ def get_last_nums(month, day, year, whichState, sex, sdx):
 def generateDLNMarylandMichigan( state, month, day, year, sex, first, last, middle=None):
 	MyLicenseNumber = get_last_nums(month, day, year, state, sex, name_middle_initial(first,last, middle))
 	return MyLicenseNumber
-
-print(generateDLNMarylandMichigan('michigan', "January", 1, 2049, 'm','Opius','Henry', 'B'))

@@ -27,6 +27,8 @@ def get_soundex(name):
 def name_middle_initial(name, last_name, middle_initial=None):
 	#get soundex of given name
 	sdx = get_soundex(last_name)
+	if middle_initial is not None:
+		middle_initial = middle_initial[0]
 
 	name_dictionary = {'Albert':20, 'Frank':260,'Marvin':580,
 						'Alice':20, 'George':300,'Mary':580,
@@ -82,7 +84,6 @@ def name_middle_initial(name, last_name, middle_initial=None):
 				name0 = "0" + name0
 		sdx += str(name0)
 
-
 	return sdx
 
 def get_last_nums(month, day, year, whichState, sex, sdx):
@@ -95,11 +96,11 @@ def get_last_nums(month, day, year, whichState, sex, sdx):
 	else:
 		isFemale = False
 
-	if whichState.lower() == 'illinois':
+	if whichState.lower() == 'il':
 		eachMonth = 31
 		if isFemale == True:
 			isFemaleTrue = 6
-	elif whichState.lower() == 'florida' or whichState.lower() == 'wisconsin':
+	elif whichState.lower() == 'fl' or whichState.lower() == 'wi':
 		eachMonth = 40
 		if isFemale == True:
 			isFemaleTrue = 5
@@ -115,7 +116,7 @@ def get_last_nums(month, day, year, whichState, sex, sdx):
 
 	year = year[-2:]
 
-	monthEncoding = (dictMonths[month.upper()] - 1) * eachMonth + day
+	monthEncoding = (dictMonths[month.upper()] - 1) * eachMonth + int(day)
 
 	if len(str(monthEncoding)) < 3:
 		monthEncoding = str(monthEncoding)
@@ -134,17 +135,16 @@ def get_last_nums(month, day, year, whichState, sex, sdx):
 
 # One function to generate and format a driver's license number for 
 # illinois, wisconsin, and florida
-def generateDLN( state, month, day, year, sex, first, last, middle=None ):
+def generateDLNIllinoisFloridaWisconsin( state, month, day, year, sex, first, last, middle=None ):
 	MyLicenseNumber = get_last_nums(month, day, year, state, sex, name_middle_initial(first,last, middle))
 	state = state.lower()
 
 	#formatting for individual states
 	#overflow numbers are added at the end and represented as '0' or '00'
-	if state == 'florida':
+	state=state.lower()
+	if state == 'fl':
 		MyLicenseNumber = MyLicenseNumber + '0'
 
-	elif state == 'wisconsin':
+	elif state == 'wi':
 		MyLicenseNumber = MyLicenseNumber + '00'
 	return MyLicenseNumber
-
-print(generateDLN('illinois', "January", 1, 2049, 'm','Opius','Henry', 'B'))

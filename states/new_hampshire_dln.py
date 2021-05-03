@@ -32,5 +32,3 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
 def generateDLNNewHampshire( state, month, day, year, sex, first, last, middle=None):
 	MyLicenseNumber = get_num(month, day, year, state, sex, first,last, middle)
 	return MyLicenseNumber
-
-print(generateDLNNewHampshire('michigan', "January", 1, 2049, 'm','Opius','Henry', 'B'))

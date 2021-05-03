@@ -23,17 +23,19 @@ def validate():
 @app.route("/submission", methods = ['GET','POST'])
 def submit():
     fName = request.form['fName']
+    mName = request.form['mName']
     lName = request.form['lName']
     dlNumber = request.form['dlNumber']
     state = request.form['state']
     month = request.form['month']
     day = request.form['day']
+    year = request.form['year']
     sex = request.form['sex']
     dlMonth = request.form['dlMonth']
     dlYear = request.form['dlYear']
     form = dlnvForm()
 
-    response = check_is_valid(state, dlNumber, fName, lName, month, day, sex, dlMonth, dlYear)
+    response = check_is_valid(state, dlNumber, fName, lName, mName, month, day, year, sex, dlMonth, dlYear)
     if response == True:
         flash(f"Your Driver's License Number is Valid", 'success')
     else:

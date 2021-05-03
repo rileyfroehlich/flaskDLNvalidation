@@ -1,4 +1,11 @@
 from dlnvalidation import is_valid
+from datetime import date
+from verify_DL import DLHelper
+
+dictMonths = {"JANUARY" : 1, "FEBRUARY" : 2, "MARCH" : 3,
+    "APRIL" : 4, "MAY" : 5, "JUNE" : 6, "JULY" : 7,
+    "AUGUST" : 8, "SEPTEMBER" : 9, "OCTOBER" : 10,
+    "NOVEMBER" : 11, "DECEMBER" : 12}
 
 def get_state_abbr(state):
     state = str(state)
@@ -62,24 +69,52 @@ def get_state_abbr(state):
         'Wyoming': 'WY'
     }
 
-    if len(state) == 2:
+    if len(state) == 2 and state in us_state_abbrev.values():
         return state.upper()
 
     state = state.capitalize()
-    print(state)
 
     if state in us_state_abbrev.keys():
         return us_state_abbrev[state]
-    else:
-        return None
+    
+    #State not found return None
+    return None
 
-def check_is_valid(state_abbr, dln):
+def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, dlMonth, dlYear):
     state_abbr = get_state_abbr(state_abbr)
     if state_abbr is not None:
+
+        if dlMonth.upper() not in dictMonths.keys():
+            return "Invalid expiry month identified"
+        else:
+            dlMonth = dictMonths[dlMonth.upper()]
+        if month.upper() not in dictMonths.keys():
+            return "Invalid birth month identified"
+        if len(dlYear) != 4 or len(year) != 4:
+            return "Invalid year identified"
+        if len(day) > 2:
+            return "Invalid day of birth identified"
+
         try:
             if is_valid(dln, state_abbr):
-                #check state generator here
-                return True
+                #check expiry date if the DL format is correct
+                today = date.today()
+                curr_month = int(today.strftime('%m'))
+                curr_year = int(today.strftime('%Y'))
+    
+                if curr_year > int(dlYear):
+                    return "Your Driver's License is Expired!"
+                elif curr_year == int(dlYear) and curr_month > int(dlMonth):
+                    return "Your Driver's License is Expired!"
+
+                #call helper functions to verify DL number
+                day = int(day)
+                year = int(year)
+                DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex, dlMonth, dlYear )
+                if dln == DLN:
+                    return True
+                return "Your Driver's License Number is not Valid!"
+            
             else:
                 return "Your Driver's License Number is not Valid!"
         except Exception as e:
