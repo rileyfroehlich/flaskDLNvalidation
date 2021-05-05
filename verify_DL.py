@@ -24,7 +24,7 @@ def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, eyeCo
 
     #COLORADO
     elif state_abbr == 'CO':
-        return generateDLNColorado
+        return generateDLNColorado(issueDay, issueMonth, issueYear)
 
     #state not included/something went wrong
     else:
