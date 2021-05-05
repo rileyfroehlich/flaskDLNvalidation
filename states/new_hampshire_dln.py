@@ -1,3 +1,9 @@
+'''
+New Hampshire uses the month(2 digits), first letter last name,
+last letter last name, first letter first name, last two digits
+of the year, the day(2 digits), and 1 overflow num
+'''
+
 def get_num(month, day, year, whichState, sex, first, last, middle=None):
     sdx = ''
     first = first.upper()
@@ -22,6 +28,7 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
     sdx += last[0] + last[len(last) - 1] + first[0]
     sdx += str(year)[2:]
     sdx += str(day).zfill(2)
+    
     #overflow num - default '0'
     sdx += '0'
     return sdx

@@ -80,7 +80,13 @@ def get_state_abbr(state):
     #State not found return None
     return None
 
-def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, dlDay, dlMonth, dlYear):
+'''
+The main function for verifying and checking the information provided
+Calls DLHelper in verify_DL.py to verify states individually
+'''
+def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, eyeColor, issueDay, 
+                    issueMonth, issueYear, dlDay, dlMonth, dlYear):
+
     state_abbr = get_state_abbr(state_abbr)
     if state_abbr is not None:
 
@@ -97,6 +103,7 @@ def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, 
 
         try:
             if is_valid(dln, state_abbr):
+                
                 #check expiry date if the DL format is correct
                 expiration_date = str(dlYear) + '-' + str(dlMonth) + '-' + str(dlDay)
                 if datetime.strptime(expiration_date,"%Y-%m-%d").date() < date.today():
@@ -106,7 +113,8 @@ def check_is_valid(state_abbr, dln, fName, lName, mName, month, day, year, sex, 
                 day = int(day)
                 year = int(year)
 
-                DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex )
+                DLN = DLHelper( state_abbr, dln, fName, lName, mName, month, day, year, sex, 
+                                eyeColor, issueDay, issueMonth, issueYear )
                 print(DLN)
                 if dln == DLN or DLN == True:
                     return True
