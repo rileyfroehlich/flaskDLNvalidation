@@ -19,11 +19,11 @@ def get_num(day, month, year):
     if month in dictMonths.keys():
         month = dictMonths[month]
 
+    #finds the day of the year
     date = str(year) + '-' + str(month) + '-' + str(day)
     day_of_year = datetime.strptime(date,"%Y-%m-%d").date().strftime('%j')
 
-    print(day_of_year)
-
+    #before 1992, change year
     if int(year) <= 1992:
         year = 1992
     sdx += str(year)[2:]
@@ -31,7 +31,6 @@ def get_num(day, month, year):
 
     #####OVERFLOW NUM#####
     sdx += '0001'
-    print(sdx)
     return sdx
 
 

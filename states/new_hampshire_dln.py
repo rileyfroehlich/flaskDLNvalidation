@@ -15,6 +15,7 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
 		"AUGUST" : 8, "SEPTEMBER" : 9, "OCTOBER" : 10,
 		"NOVEMBER" : 11, "DECEMBER" : 12}
 
+    #change month and find num code
     if month.upper() in dictMonths:
         month_num = dictMonths[month.upper()]
         month_code = str(month_num).zfill(2)
@@ -24,6 +25,7 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
     if day < 1 or day > 31:
         return "Bad Day"
 
+    #put DL number together
     sdx += month_code
     sdx += last[0] + last[len(last) - 1] + first[0]
     sdx += str(year)[2:]
@@ -35,7 +37,7 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
 
 
 # One function to generate and format a driver's license number for 
-# illinois, wisconsin, and florida
+# new hampshire
 def generateDLNNewHampshire( state, month, day, year, sex, first, last, middle=None):
 	MyLicenseNumber = get_num(month, day, year, state, sex, first,last, middle)
 	return MyLicenseNumber

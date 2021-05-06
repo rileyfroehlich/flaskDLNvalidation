@@ -1196,6 +1196,7 @@ def get_last_nums(month, day, year, whichState, sex, sdx):
 		"AUGUST" : 8, "SEPTEMBER" : 9, "OCTOBER" : 10,
 		"NOVEMBER" : 11, "DECEMBER" : 12}
 
+    #get month and day encoding using dicts
     if month.upper() in dictMonths:
         month_dict = birthday_dictionary[dictMonths[month.upper()]]
         if day in month_dict:

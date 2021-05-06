@@ -11,15 +11,15 @@ app.config.from_object(__name__)
 # Flask-WTF requires an encryption key - the string can be anything
 app.config['SECRET_KEY'] = 'Ftcc9uACqVnPPuuK5EtsUvguUwYIyi0P'
 
-
+#home page routing
 @app.route("/", methods = ['GET', 'POST'])
 def validate():
     form = dlnvForm()
     if form.validate_on_submit():
- #       if {validation} is not False:
             return redirect(url_for('submit'))
     return render_template('dlnpage.html', title='Validator', form=form)
 
+#after submit clicked redirect to submission
 @app.route("/submission", methods = ['GET','POST'])
 def submit():
     fName = request.form['fName']
@@ -40,9 +40,11 @@ def submit():
     dlYear = request.form['dlYear']
     form = dlnvForm()
 
+    #call to main.py passing in all fields
     response = check_is_valid(state, dlNumber, fName, lName, mName, month, day, year, sex, eyeColor,
                                 issueDay, issueMonth, issueYear, dlDay, dlMonth, dlYear)
 
+    #print response flash at bottom of page
     if response == True:
         flash(f"Your Driver's License Number is Valid", 'success')
     else:

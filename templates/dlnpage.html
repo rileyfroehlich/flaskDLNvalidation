@@ -5,8 +5,13 @@
         <form method="POST" action="{{ url_for('submit') }}">
             {{ form.hidden_tag() }}
 
+            <!--
+                This is the form where all the info goes
+                dlnv.py gets elements from here
+            -->
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Verify your Driver's License Number</legend>
+                <!--Name info-->
                 <div class=form-group" name="fName">
                     {{ form.fName.label(class="form-control-label") }}
                     {{ form.fName(class="form-control form-control lg") }}
@@ -19,6 +24,7 @@
                     {{ form.lName.label(class="form-control-label") }}
                     {{ form.lName(class="form-control form-control lg") }}
                 </div>
+                <!--Personal info-->
                 <div class=form-group" name="month">
                     {{ form.month.label(class="form-control-label") }}
                     {{ form.month(class="form-control form-control lg") }}
@@ -39,6 +45,7 @@
                     {{ form.eyeColor.label(class="form-control-label") }}
                     {{ form.eyeColor(class="form-control form-control lg") }}
                 </div>
+                <!--DL info-->
                 <div class=form-group" name="dlNumber">
                     {{ form.dlNumber.label(class="form-control-label") }}
                     {{ form.dlNumber(class="form-control form-control lg") }}
@@ -72,6 +79,7 @@
                     {{ form.state(class="form-control form-control lg") }}
                 </div>
             </fieldset>
+            <!--Submit button-->
             <div class="form-group" action=>
                 {{ form.submit(class='btn btn-outline-info')}}
             </div>

@@ -4,6 +4,7 @@ from states.Illinois_Florida_Wisconsin import generateDLNIllinoisFloridaWisconsi
 from states.utah_dln_nums import generateDLN_UT_TN_NM_VT_MB_WA
 from states.colorado import generateDLNColorado
 
+#takes in all variables passed to main.py to call individual state DLN checkers
 def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, eyeColor, issueDay, issueMonth, issueYear ):
 
     #FLORIDA, WISCONSIN, ILLINOIS
