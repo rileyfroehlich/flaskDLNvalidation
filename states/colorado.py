@@ -30,12 +30,33 @@ def get_num(day, month, year):
     sdx += str(day_of_year)
 
     #####OVERFLOW NUM#####
-    sdx += '0001'
+#    sdx += '0001'
     return sdx
 
+#Use the generic state validator to verify inputs
+def Colorado_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight, extra=None):
+    from Generic_State import generic_State_is_valid
+    expiration_length = [5]
+    sex_X = True
+    hair = hair
+    issue_date = issue_date
+    state = "CO"
+    return generic_State_is_valid(dln, DOB, expiration_date, expiration_length, eyes, height, issue_date, sex, state, weight, sex_X, hair, extra=extra)
 
 # One function to generate and format a driver's license number for 
 # illinois, wisconsin, and florida
 def generateDLNColorado( dayIssue, monthIssue, yearIssue ):
-	MyLicenseNumber = get_num(dayIssue, monthIssue, yearIssue)
-	return MyLicenseNumber
+    result = Colorado_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight)
+    if result != True:
+        return result
+    MyLicenseNumber = get_num(dayIssue, monthIssue, yearIssue)
+    return MyLicenseNumber
+
+"""
+60f
+Summary Comment for Colorado:
+    Imports Generic State Validator function and passes its
+    parameters to it, with the addition of sex_X = True,
+    with hair, and expiration_length is 5 years
+f06
+"""

@@ -32,12 +32,34 @@ def get_num(month, day, year, whichState, sex, first, last, middle=None):
     sdx += str(day).zfill(2)
     
     #overflow num - default '0'
-    sdx += '0'
+#    sdx += '0'
     return sdx
 
+def new_hampshire_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight, extra=None):
+    from Generic_State import generic_State_is_valid
+    expiration_length = [5]
+    sex_X = True
+    hair = hair
+    issue_date = issue_date
+    state = "NH"
+    result = generic_State_is_valid(dln, DOB, expiration_date, expiration_length, eyes, height, issue_date, sex, state, weight, sex_X, hair, extra=extra)
+    return result
 
 # One function to generate and format a driver's license number for 
 # new hampshire
 def generateDLNNewHampshire( state, month, day, year, sex, first, last, middle=None):
-	MyLicenseNumber = get_num(month, day, year, state, sex, first,last, middle)
-	return MyLicenseNumber
+    results = new_hampshire_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight)
+    if results != True:
+        return results
+    MyLicenseNumber = get_num(month, day, year, state, sex, first,last, middle)
+    return MyLicenseNumber
+
+"""
+60f
+Summary Comment for New Hampshire:
+    Imports Generic State Validator function and passes its
+    parameters to it, with the addition of sex_X = True,
+    with hair, and expiration_length is 5 years
+f06
+"""
+

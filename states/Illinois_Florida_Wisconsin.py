@@ -146,8 +146,10 @@ def generateDLNIllinoisFloridaWisconsin( state, month, day, year, sex, first, la
 	#overflow numbers are added at the end and represented as '0' or '00'
 	state=state.lower()
 	if state == 'fl':
-		MyLicenseNumber = MyLicenseNumber + '0'
+		#overflow num = 1 digit
+		MyLicenseNumber = MyLicenseNumber
 
 	elif state == 'wi':
-		MyLicenseNumber = MyLicenseNumber + '00'
+		#overflow num = 2 digits
+		MyLicenseNumber = MyLicenseNumber
 	return MyLicenseNumber
