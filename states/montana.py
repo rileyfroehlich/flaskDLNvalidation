@@ -53,6 +53,26 @@ def get_num(first, month, year, day, sex):
     return sdx
 
 
-def generateDLN(first, sex, month, year, day):
+def montana_is_valid(first, sex, month, year, day):
+    #set up params for generic state
+    expiration_length = [4]
+    sex_X = False
+    hair = False
+    issue_date = issue_date
+    state = "MT"
+    reuslts = generic_State_is_valid(dln, DOB, expiration_date, expiration_length, eyes, height, issue_date, sex, state, weight, sex_X, hair, extra=extra)
+    if reuslts != True:
+        return reuslts
+
+    #Generate number
     mylicensenumber = get_num(first, sex, month, year, day)
     return mylicensenumber
+
+"""
+60f
+Summary Comment for Montana:
+    Imports Generic State Validator function and passes its
+    parameters to it, with the addition of sex_X = False,
+    with hair, and expiration_length is 4(75+) or 8 years
+f06
+"""

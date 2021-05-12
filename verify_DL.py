@@ -22,6 +22,7 @@ from states.Illinois import Illinois_is_valid
 from states.Indiana import Indiana_is_valid
 from states.Iowa import Iowa_is_valid
 from states.Kansas import Kansas_is_valid
+from states.Kentucky import kentucky_is_valid
 from states.Louisiana import Louisiana_is_valid
 from states.Maine import Maine_is_valid
 from states.Maryland import Maryland_is_valid
@@ -30,8 +31,10 @@ from states.Michigan import Michigan_is_valid
 from states.Minnesota import minnesota_is_valid
 from states.Mississipi import mississipi_is_valid
 from states.Missouri import missouri_is_valid
+from states.montana import montana_is_valid
 from states.Nebraska import nebraska_is_valid
 from states.Nevada import nevada_is_valid
+#New Jersey
 from states.New_Mexico import new_mexico_is_valid
 from states.New_York import new_york_is_valid
 from states.North_Carolina import north_carolina_is_valid
@@ -117,6 +120,7 @@ def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, eyeCo
         return generateDLN_UT_TN_NM_VT_MB_WA( dln, state_abbr )
 
     #COLORADO
+    #TO DO params
     elif state_abbr == 'CO':
         #remove overflow nums
         dln = dln[:-4]
@@ -179,6 +183,10 @@ def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, eyeCo
     elif state_abbr == "KS":
         return Kansas_is_valid(dln, DOB, expiration_date, eyes, height, issue_date, sex, weight)
     
+    #Kentucky
+    elif state_abbr == "KY":
+        return kentucky_is_valid(dln, DOB, expiration_date, eyes, height, issue_date, sex, weight)
+
     #Louisiana
     elif state_abbr == "LA":
         return Louisiana_is_valid(dln, DOB, expiration_date, eyes, height, issue_date, sex, weight)
@@ -203,6 +211,11 @@ def DLHelper(state_abbr, dln, fName, lName, middle, month, day, year, sex, eyeCo
     elif state_abbr == "MO":
         return missouri_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight)
     
+    #Montana
+    #TO DO params
+    elif state_abbr == "MT":
+        return montana_is_valid(first, sex, month, year, day)
+
     #Nebraska
     elif state_abbr == "NE":
         return nebraska_is_valid(dln, DOB, expiration_date, eyes, hair, height, issue_date, sex, weight)
